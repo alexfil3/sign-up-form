@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Alex Filimonov">
+    <meta name="description" content="Practicing my form skills: semantic elements and styling forms elements">
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Sign Up Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <div class="logo-bgc">
+                <div class="logo-icon"></div>
+                <h1 class="title">Odin</h1>
+            </div>
+            <p></p>
+        </div>
+        <main>
+            <div class="text-content">
+                <p>This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams. <br> Sign up <em>now</em> to get started.</p>
+                <p>You <em>know</em> you want to.</p>
+            </div>
+            <form action="https://httpbin.org/post" method="post">
+                <fieldset>
+                    <legend>Let's do this!</legend>
+                    <ul>
+                        <li>
+                            <label for="fname">First name</label>
+                            <input type="text" id="fname" name="fname" required aria-labelledby="first-name-required">
+                            <div id="first-name-required"></div>
+                        </li>
+                        <li>
+                            <label for="lname">Last name</label>
+                            <input type="text" id="lname" name="lname" required aria-labelledby="last-name-required">
+                            <div id="last-name-required"></div>
+                        </li>
+                        <li>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required aria-labelledby="email-required">
+                            <div id="email-required"></div>
+                        </li>
+                        <li>
+                            <label for="phone">Phone number(optional)</label>
+                            <input type="text" id="phone" name="phone" inputmode="numeric" aria-labelledby="valid-phone-number">
+                            <div id="valid-phone-number"></div>
+                        </li>
+                        <li>
+                            <label for="pwd">Password</label>
+                            <input type="password" id="pwd" name="pwd" required aria-labelledby="password-validation">
+                            <div id="password-validation"></div>
+                        </li>
+                        <li>
+                            <label for="confirm-pwd">Confirm Password</label>
+                            <input type="password" id="confirm-pwd" name="confirm-pwd" required aria-labelledby="password-confirm-validation">
+                            <div id="password-confirm-validation"></div>
+                        </li>
+                    </ul>
+                </fieldset>
+                <button>Create Account</button>
+                <p>Already have an account? <a href="#">Log in</a></p>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
