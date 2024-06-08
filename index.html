@@ -20,13 +20,13 @@
         </div>
         <main>
             <div class="text-content">
-                <p>This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams. <br> Sign up <em>now</em> to get started.</p>
+                <p class="text-content-first-paragraph">This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams. <br> Sign up <em>now</em> to get started.</p>
                 <p>You <em>know</em> you want to.</p>
             </div>
-            <form action="https://httpbin.org/post" method="post">
+            <form action="https://httpbin.org/post" method="post" novalidate>
                 <fieldset>
                     <legend>Let's do this!</legend>
-                    <ul>
+                    <ul class="inputs-list">
                         <li>
                             <label for="fname">First name</label>
                             <input type="text" id="fname" name="fname" required aria-labelledby="first-name-required">
@@ -59,8 +59,10 @@
                         </li>
                     </ul>
                 </fieldset>
-                <button>Create Account</button>
-                <p>Already have an account? <a href="#">Log in</a></p>
+                <div class="button-wrapper">
+                    <button class="btn">Create Account</button>
+                    <p class="login-text">Already have an account? <a href="#">Log in</a></p>
+                </div>
             </form>
         </main>
     </div>
