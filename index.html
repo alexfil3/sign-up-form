@@ -27,35 +27,35 @@
                 <fieldset>
                     <legend>Let's do this!</legend>
                     <ul class="inputs-list">
-                        <li>
+                        <li class="control-group">
                             <label for="fname">First name</label>
-                            <input type="text" id="fname" name="fname" required aria-labelledby="first-name-required">
-                            <div id="first-name-required"></div>
+                            <input type="text" id="fname" name="fname" minlength="2" required aria-labelledby="first-name-required">
+                            <div class="error" id="first-name-required"></div>
                         </li>
-                        <li>
+                        <li class="control-group">
                             <label for="lname">Last name</label>
-                            <input type="text" id="lname" name="lname" required aria-labelledby="last-name-required">
-                            <div id="last-name-required"></div>
+                            <input type="text" id="lname" name="lname" minlength="2" required aria-labelledby="last-name-required">
+                            <div class="error" id="last-name-required"></div>
                         </li>
-                        <li>
+                        <li class="control-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" required aria-labelledby="email-required">
-                            <div id="email-required"></div>
+                            <div class="error" id="email-required"></div>
                         </li>
-                        <li>
+                        <li class="control-group">
                             <label for="phone">Phone number(optional)</label>
-                            <input type="text" id="phone" name="phone" inputmode="numeric" aria-labelledby="valid-phone-number">
-                            <div id="valid-phone-number"></div>
+                            <input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}" inputmode="numeric" aria-labelledby="valid-phone-number">
+                            <div class="error" id="valid-phone-number"></div>
                         </li>
-                        <li>
+                        <li class="control-group">
                             <label for="pwd">Password</label>
-                            <input type="password" id="pwd" name="pwd" required aria-labelledby="password-validation">
-                            <div id="password-validation"></div>
+                            <input type="password" id="pwd" name="pwd" minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required aria-labelledby="password-validation">
+                            <div class="error" id="password-validation"></div>
                         </li>
-                        <li>
+                        <li class="control-group">
                             <label for="confirm-pwd">Confirm Password</label>
-                            <input type="password" id="confirm-pwd" name="confirm-pwd" required aria-labelledby="password-confirm-validation">
-                            <div id="password-confirm-validation"></div>
+                            <input type="password" id="confirm-pwd" name="confirm-pwd"  minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required aria-labelledby="password-confirm-validation">
+                            <div class="error" id="password-confirm-validation"></div>
                         </li>
                     </ul>
                 </fieldset>
@@ -66,5 +66,6 @@
             </form>
         </main>
     </div>
+    <script src="./form-validation.js"></script>
 </body>
 </html>

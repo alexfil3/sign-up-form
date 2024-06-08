@@ -129,8 +129,12 @@ legend {
 .inputs-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px 60px;
+    gap: 44px 60px;
     max-width: 800px;
+}
+
+.control-group {
+    position: relative;
 }
 
 label {
@@ -155,6 +159,25 @@ input:focus {
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+/* inputs validation styles */
+.valid {
+    border-color: green;
+}
+
+.invalid {
+    border-color: red;
+}
+
+.error {
+    position: absolute;
+    max-width: 300px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: red;
+    top: 54px;
+    left: 0;
 }
 
 .button-wrapper {
