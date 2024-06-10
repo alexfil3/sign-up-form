@@ -29,12 +29,12 @@
                     <ul class="inputs-list">
                         <li class="control-group">
                             <label for="fname">First name</label>
-                            <input type="text" id="fname" name="fname" minlength="2" required aria-labelledby="first-name-required">
+                            <input type="text" id="fname" name="fname" pattern="[A-Za-z]{1,32}" minlength="2" required aria-labelledby="first-name-required">
                             <div class="error" id="first-name-required"></div>
                         </li>
                         <li class="control-group">
                             <label for="lname">Last name</label>
-                            <input type="text" id="lname" name="lname" minlength="2" required aria-labelledby="last-name-required">
+                            <input type="text" id="lname" name="lname" pattern="[A-Za-z]{1,32}" minlength="2" required aria-labelledby="last-name-required">
                             <div class="error" id="last-name-required"></div>
                         </li>
                         <li class="control-group">

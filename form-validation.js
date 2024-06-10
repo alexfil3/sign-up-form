@@ -51,11 +51,27 @@ function showError(input) {
   );
   const error = input.validationMessage;
 
-  if (input.name === "phone") {
-    div.textContent = `${error} example(US based number: 123-456-7890)`;
-  } else {
-    div.textContent = error;
+  // test
+  // create a switch here
+  switch (input.name) {
+    case "fname":
+      checkNameValidity(input, div);
+      break;
+    case "lname":
+      console.log("here");
+      checkLastNameValidity(input, div);
+      break;
+    case "email":
+      checkEmailValidity(input, div);
+      break;
   }
+  // test
+
+  // if (input.name === "phone") {
+  //   div.textContent = `${error} example(US based number: 123-456-7890)`;
+  // } else {
+  //   div.textContent = error;
+  // }
 
   if (input.name === "pwd" && !input.validity.valueMissing) {
     div.textContent =
@@ -77,5 +93,60 @@ function inputEventValidity(e) {
     showError(elem);
   } else {
     showSuccess(elem);
+  }
+}
+
+function checkNameValidity(input, div) {
+  const value = input.validity;
+
+  if (value.patternMismatch) {
+    div.textContent = "Your name should consist only of English letters";
+    return;
+  }
+
+  if (value.tooShort) {
+    div.textContent =
+      "The name should be at least 2 letters. Now the length is 1 letter";
+    return;
+  }
+
+  if (value.valueMissing) {
+    div.textContent = "Fill in this field";
+    return;
+  }
+}
+
+function checkLastNameValidity(input, div) {
+  const value = input.validity;
+
+  if (value.patternMismatch) {
+    div.textContent = "Your last name should consist only of English letters";
+    return;
+  }
+
+  if (value.tooShort) {
+    div.textContent =
+      "The last name should be at least 2 letters. Now the length is 1 letter";
+    return;
+  }
+
+  if (value.valueMissing) {
+    div.textContent = "Fill in this field";
+    return;
+  }
+}
+
+function checkEmailValidity(input, div) {
+  const value = input.validity;
+
+  if (value.valueMissing) {
+    div.textContent = "Fill in this field";
+    return;
+  }
+
+  if (!value.validity) {
+    div.textContent =
+      "Please, use valid email address (example: john_doe@gmail.com)";
+    return;
   }
 }
