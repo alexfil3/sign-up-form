@@ -51,6 +51,10 @@ function showError(input) {
   );
   const error = input.validationMessage;
 
+  if (!input["required"] && input.value === "undefined") {
+    return;
+  }
+
   // test
   // create a switch here
   switch (input.name) {
@@ -64,6 +68,17 @@ function showError(input) {
     case "email":
       checkEmailValidity(input, div);
       break;
+    case "phone":
+      checkPhoneValidity(input, div);
+      break;
+    case "pwd":
+      checkPwdValidity(input, div);
+      break;
+    case "confirm-pwd":
+      checkConfirmPwdValidity(input, div);
+      break;
+    default:
+      return;
   }
   // test
 
@@ -73,14 +88,10 @@ function showError(input) {
   //   div.textContent = error;
   // }
 
-  if (input.name === "pwd" && !input.validity.valueMissing) {
-    div.textContent =
-      "Password should use at least one UpperCase, LowerCase and Number, and be of 8-16 characters length";
-  }
-
-  if (!input["required"] && input.value === "undefined") {
-    return;
-  }
+  // if (input.name === "pwd" && !input.validity.valueMissing) {
+  //   div.textContent =
+  //     "Password should use at least one UpperCase, LowerCase and Number, and be of 8-16 characters length";
+  // }
 
   input.classList.remove("valid");
   input.classList.add("invalid");
@@ -150,3 +161,62 @@ function checkEmailValidity(input, div) {
     return;
   }
 }
+
+function checkPhoneValidity(input, div) {
+  const value = input.validity;
+
+  if (value.patternMismatch) {
+    div.textContent =
+      "Your Phone Number should be in the format of: 123-456-7890";
+    return;
+  }
+}
+
+function checkPwdValidity(input, div) {
+  const value = input.validity;
+
+  if (value.tooShort) {
+    div.textContent = "The password should be at least 8 characters long";
+    return;
+  }
+
+  if (value.patternMismatch) {
+    div.textContent =
+      "Password should use at least one UpperCase, LowerCase and Number";
+    return;
+  }
+
+  if (value.valueMissing) {
+    div.textContent = "Fill in this field";
+    return;
+  }
+}
+
+function checkConfirmPwdValidity(input, div) {
+  const firstPwd = document.querySelector('[name="pwd"]');
+  const value = input.validity;
+  console.log(firstPwd.value !== input.value);
+
+  if (value.tooShort) {
+    div.textContent = "The password should be at least 8 characters long";
+    return;
+  }
+
+  if (value.patternMismatch) {
+    div.textContent =
+      "Password should use at least one UpperCase, LowerCase and Number";
+    return;
+  }
+
+  if (value.valueMissing) {
+    div.textContent = "Fill in this field";
+    return;
+  }
+
+  if (firstPwd.value !== input.value) {
+    div.textContent = "Your confirm password should be equal to the password";
+    return;
+  }
+}
+
+// can't compare two passwords on uqality
