@@ -31,31 +31,67 @@
                             <label for="fname">First name</label>
                             <input type="text" id="fname" name="fname" pattern="[A-Za-z]{1,32}" minlength="2" required aria-labelledby="first-name-required">
                             <div class="error" id="first-name-required"></div>
+                            <svg class="icon-valid">
+                                <use href="./sprite.svg#icon-valid"/>
+                            </svg>
+                            <svg class="icon-invalid">
+                                <use href="./sprite.svg#icon-invalid"/>
+                            </svg>
                         </li>
                         <li class="control-group">
                             <label for="lname">Last name</label>
                             <input type="text" id="lname" name="lname" pattern="[A-Za-z]{1,32}" minlength="2" required aria-labelledby="last-name-required">
                             <div class="error" id="last-name-required"></div>
+                            <svg class="icon-valid">
+                                <use href="./sprite.svg#icon-valid"/>
+                            </svg>
+                            <svg class="icon-invalid">
+                                <use href="./sprite.svg#icon-invalid"/>
+                            </svg>
                         </li>
                         <li class="control-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" required aria-labelledby="email-required">
                             <div class="error" id="email-required"></div>
+                            <svg class="icon-valid">
+                                <use href="./sprite.svg#icon-valid"/>
+                            </svg>
+                            <svg class="icon-invalid">
+                                <use href="./sprite.svg#icon-invalid"/>
+                            </svg>
                         </li>
                         <li class="control-group">
                             <label for="phone">Phone number(optional)</label>
                             <input type="text" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}" inputmode="numeric" aria-labelledby="valid-phone-number">
                             <div class="error" id="valid-phone-number"></div>
+                            <svg class="icon-valid">
+                                <use href="./sprite.svg#icon-valid"/>
+                            </svg>
+                            <svg class="icon-invalid">
+                                <use href="./sprite.svg#icon-invalid"/>
+                            </svg>
                         </li>
                         <li class="control-group">
                             <label for="pwd">Password</label>
                             <input type="password" id="pwd" name="pwd" minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required aria-labelledby="password-validation">
                             <div class="error" id="password-validation"></div>
+                            <svg class="icon-valid">
+                                <use href="./sprite.svg#icon-valid"/>
+                            </svg>
+                            <svg class="icon-invalid">
+                                <use href="./sprite.svg#icon-invalid"/>
+                            </svg>
                         </li>
                         <li class="control-group">
                             <label for="confirm-pwd">Confirm Password</label>
                             <input type="password" id="confirm-pwd" name="confirm-pwd"  minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required aria-labelledby="password-confirm-validation">
                             <div class="error" id="password-confirm-validation"></div>
+                            <svg class="icon-valid">
+                                <use href="./sprite.svg#icon-valid"/>
+                            </svg>
+                            <svg class="icon-invalid">
+                                <use href="./sprite.svg#icon-invalid"/>
+                            </svg>
                         </li>
                     </ul>
                 </fieldset>

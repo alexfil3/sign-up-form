@@ -4,11 +4,17 @@ const inputs = document.querySelectorAll("input");
 for (let i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener("blur", (e) => {
     const input = e.target;
+    const firstPwd = document.querySelector('[name="pwd"]');
 
     if (!input.validity.valid || input.validity.valueMissing) {
       showError(input);
       input.addEventListener("input", (e) => inputEventValidity(e));
     } else {
+      if (input.name === "confirm-pwd" && input.value !== firstPwd.value) {
+        showError(input);
+        input.addEventListener("input", (e) => inputEventValidity(e));
+        return;
+      }
       showSuccess(input);
       input.addEventListener("input", (e) => inputEventValidity(e));
     }
@@ -34,35 +40,48 @@ function showSuccess(input) {
   const div = document.getElementById(
     `${input.getAttribute("aria-labelledby")}`
   );
+  const iconInvalid = document.querySelector(
+    `[name="${input.name}"] ~ .icon-invalid`
+  );
+  const iconValid = document.querySelector(
+    `[name="${input.name}"] ~ .icon-valid`
+  );
+
   div.textContent = "";
   if (!input["required"] && input.value.length === 0) {
     input.classList.remove("valid");
     input.classList.remove("invalid");
+    iconValid.classList.remove("icon-show");
+    iconInvalid.classList.remove("icon-show");
     return;
   }
 
   input.classList.remove("invalid");
   input.classList.add("valid");
+  iconValid.classList.add("icon-show");
+  iconInvalid.classList.remove("icon-show");
 }
 
 function showError(input) {
   const div = document.getElementById(
     `${input.getAttribute("aria-labelledby")}`
   );
-  const error = input.validationMessage;
+  const iconInvalid = document.querySelector(
+    `[name="${input.name}"] ~ .icon-invalid`
+  );
+  const iconValid = document.querySelector(
+    `[name="${input.name}"] ~ .icon-valid`
+  );
 
   if (!input["required"] && input.value === "undefined") {
     return;
   }
 
-  // test
-  // create a switch here
   switch (input.name) {
     case "fname":
       checkNameValidity(input, div);
       break;
     case "lname":
-      console.log("here");
       checkLastNameValidity(input, div);
       break;
     case "email":
@@ -80,27 +99,19 @@ function showError(input) {
     default:
       return;
   }
-  // test
-
-  // if (input.name === "phone") {
-  //   div.textContent = `${error} example(US based number: 123-456-7890)`;
-  // } else {
-  //   div.textContent = error;
-  // }
-
-  // if (input.name === "pwd" && !input.validity.valueMissing) {
-  //   div.textContent =
-  //     "Password should use at least one UpperCase, LowerCase and Number, and be of 8-16 characters length";
-  // }
-
   input.classList.remove("valid");
   input.classList.add("invalid");
+  iconValid.classList.remove("icon-show");
+  iconInvalid.classList.add("icon-show");
 }
 
 function inputEventValidity(e) {
   const elem = e.target;
+  const firstPwd = document.querySelector('[name="pwd"]');
 
   if (!elem.validity.valid || elem.validity.valueMissing) {
+    showError(elem);
+  } else if (elem.name === "confirm-pwd" && elem.value !== firstPwd.value) {
     showError(elem);
   } else {
     showSuccess(elem);
@@ -195,7 +206,6 @@ function checkPwdValidity(input, div) {
 function checkConfirmPwdValidity(input, div) {
   const firstPwd = document.querySelector('[name="pwd"]');
   const value = input.validity;
-  console.log(firstPwd.value !== input.value);
 
   if (value.tooShort) {
     div.textContent = "The password should be at least 8 characters long";
@@ -218,5 +228,3 @@ function checkConfirmPwdValidity(input, div) {
     return;
   }
 }
-
-// can't compare two passwords on uqality

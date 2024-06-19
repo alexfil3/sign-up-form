@@ -170,6 +170,28 @@ input:-webkit-autofill {
     border-color: red;
 }
 
+.icon-valid {
+    display: none;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 26px;
+    right: 6px;
+}
+
+.icon-invalid {
+    display: none;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 26px;
+    right: 6px;
+}
+
+.icon-show {
+    display: block;
+}
+
 .error {
     position: absolute;
     max-width: 300px;
